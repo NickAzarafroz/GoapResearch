@@ -1,5 +1,6 @@
 #pragma once
-#include <vector>
+
+class Avatar;
 class Texture;
 class Game final
 {
@@ -24,6 +25,8 @@ public:
 private:
 	// DATA MEMBERS
 	const Window m_Window;
+
+	Avatar* m_pPoppyAvatar;
 
 	// FUNCTIONS
 	void Initialize( );

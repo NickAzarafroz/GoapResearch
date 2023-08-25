@@ -51,6 +51,9 @@
     <ClCompile Include="Core.cpp">
       <Filter>Framework Files</Filter>
     </ClCompile>
+    <ClCompile Include="Avatar.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -84,6 +87,12 @@
       <Filter>Framework Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Goal.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Avatar.h">
       <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>

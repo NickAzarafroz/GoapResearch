@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "Game.h"
+#include "Avatar.h"
 #include <iostream>
 
 Game::Game( const Window& window ) 
@@ -15,7 +16,7 @@ Game::~Game( )
 
 void Game::Initialize( )
 {
-
+	m_pPoppyAvatar = new Avatar();
 }
 
 void Game::Cleanup( )
@@ -25,12 +26,13 @@ void Game::Cleanup( )
 
 void Game::Update(float elapsedSec)
 {
-
+	m_pPoppyAvatar->Update(elapsedSec);
 }
 
 void Game::Draw( ) const
 {
 	ClearBackground();
+	m_pPoppyAvatar->Draw();
 }
 
 void Game::ProcessKeyDownEvent( const SDL_KeyboardEvent & e )
@@ -84,7 +86,7 @@ void Game::ProcessMouseUpEvent( const SDL_MouseButtonEvent& e )
 
 void Game::ClearBackground( ) const
 {
-	glClearColor(0.0f, 1.0f, 1.f, 1.0f);
+	glClearColor(0.0f, 0.5f, 0.0f, 1.0f);
 	glClear(GL_COLOR_BUFFER_BIT);
 }
 
