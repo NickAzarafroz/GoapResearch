@@ -2,6 +2,7 @@
 #include "Avatar.h"
 #include "Texture.h"
 #include "Vector2f.h"
+#include "Action.h"
 
 Avatar::Avatar()
 	: m_Speed { 250.0f }
@@ -11,6 +12,42 @@ Avatar::Avatar()
 	m_pIdleSprite = new Texture{ "Resources/PoppyIdle.png" };
 	m_IdleSrc = Rectf{ 500.f, 500.f, m_pIdleSprite->GetWidth() / 2.0f, m_pIdleSprite->GetHeight() };
 	m_Shape = Rectf{ 500.f, 500.f, m_pIdleSprite->GetWidth(), m_pIdleSprite->GetHeight() };
+
+	m_AvailableActions[0] = new Action{ "GetSticks", 10 };
+	m_AvailableActions[0]->AddPrecondition("HasSticks", false);
+	m_AvailableActions[0]->AddPrecondition("SticksAvailable", true);
+
+	m_AvailableActions[0]->AddEffect("HasFirePit", false);
+	m_AvailableActions[0]->AddEffect("HasSticks", true);
+
+
+	m_AvailableActions[1] = new Action{ "GetAxe", 2 };
+	m_AvailableActions[1]->AddPrecondition("HasAxe", false);
+	m_AvailableActions[1]->AddPrecondition("AxeAvailable", true);
+
+	m_AvailableActions[1]->AddEffect("HasLogs", false);
+	m_AvailableActions[1]->AddEffect("HasAxe", true);
+
+	m_AvailableActions[2] = new Action{ "ChopTree", 2 };
+	m_AvailableActions[2]->AddPrecondition("HasLogs", false);
+	m_AvailableActions[2]->AddPrecondition("HasAxe", true);
+
+	m_AvailableActions[2]->AddEffect("HasFirePit", false);
+	m_AvailableActions[2]->AddEffect("HasLogs", true);
+
+	m_AvailableActions[3] = new Action{ "BuildFirePit", 2 };
+	m_AvailableActions[3]->AddPrecondition("HasFirePit", false);
+	m_AvailableActions[3]->AddPrecondition("HasLogs", true);
+
+	m_AvailableActions[3]->AddEffect("HasFirePit", true);
+	m_AvailableActions[3]->AddEffect("HasFirePit", true);
+
+	m_AvailableActions[4] = new Action{ "BuildFirePit", 2 };
+	m_AvailableActions[4]->AddPrecondition("HasFirePit", false);
+	m_AvailableActions[4]->AddPrecondition("HasSticks", true);
+
+	m_AvailableActions[4]->AddEffect("HasFirePit", true);
+	m_AvailableActions[4]->AddEffect("HasFirePit", true);
 }
 
 Avatar::~Avatar()
@@ -42,6 +79,11 @@ Vector2f Avatar::GetPosition()
 Rectf Avatar::GetShape()
 {
 	return m_Shape;
+}
+
+const std::array<Action*, 5>& Avatar::GetAvailableActions() const
+{
+	return m_AvailableActions;
 }
 
 void Avatar::UpdateIdle(float elapsedSec)

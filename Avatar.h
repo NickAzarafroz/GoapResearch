@@ -4,6 +4,7 @@
 
 struct Vector2f;
 class Texture;
+class Action;
 class Avatar
 {
 public:
@@ -22,12 +23,16 @@ public:
 
 	Vector2f GetPosition();
 	Rectf GetShape();
+
+	const std::array<Action*, 5>& GetAvailableActions() const;
 	
 private:
 	Texture* m_pIdleSprite;
 
 	Rectf m_IdleSrc;
 	Rectf m_Shape;
+
+	std::array<Action*, 5> m_AvailableActions;
 
 	float m_Speed;
 	float m_AccuSec;

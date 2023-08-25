@@ -21,7 +21,7 @@ void Game::Initialize( )
 
 void Game::Cleanup( )
 {
-	
+	delete m_pPoppyAvatar;
 }
 
 void Game::Update(float elapsedSec)
