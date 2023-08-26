@@ -63,6 +63,15 @@
     <ClCompile Include="Planner.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
+    <ClCompile Include="Axe.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="FirePit.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Tree.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -111,6 +120,18 @@
       <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Planner.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FirePit.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Tree.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Axe.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
       <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>

@@ -141,7 +141,9 @@
   <ItemGroup>
     <ClCompile Include="Action.cpp" />
     <ClCompile Include="Avatar.cpp" />
+    <ClCompile Include="Axe.cpp" />
     <ClCompile Include="Core.cpp" />
+    <ClCompile Include="FirePit.cpp" />
     <ClCompile Include="FirePitGoal.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="main.cpp" />
@@ -158,24 +160,29 @@
     <ClCompile Include="structs.cpp" />
     <ClCompile Include="SVGParser.cpp" />
     <ClCompile Include="Texture.cpp" />
+    <ClCompile Include="Tree.cpp" />
     <ClCompile Include="utils.cpp" />
     <ClCompile Include="Vector2f.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Action.h" />
     <ClInclude Include="Avatar.h" />
+    <ClInclude Include="Axe.h" />
     <ClInclude Include="Core.h" />
+    <ClInclude Include="FirePit.h" />
     <ClInclude Include="FirePitGoal.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="Goal.h" />
     <ClInclude Include="Matrix2x3.h" />
     <ClInclude Include="pch.h" />
     <ClInclude Include="Planner.h" />
+    <ClInclude Include="Resource.h" />
     <ClInclude Include="SoundEffect.h" />
     <ClInclude Include="SoundStream.h" />
     <ClInclude Include="structs.h" />
     <ClInclude Include="SVGParser.h" />
     <ClInclude Include="Texture.h" />
+    <ClInclude Include="Tree.h" />
     <ClInclude Include="utils.h" />
     <ClInclude Include="Vector2f.h" />
   </ItemGroup>
