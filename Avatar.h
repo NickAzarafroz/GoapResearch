@@ -25,7 +25,12 @@ public:
 	Rectf GetShape();
 
 	const std::vector<std::pair<std::string, bool>>& GetCurrentStates() const;
+	void AddCurrentStates(std::pair<std::string, bool>& state);
+	void ModifyCurrentState(std::pair<std::string, bool>& state, int index);
+
 	const std::array<Action*, 5>& GetAvailableActions() const;
+
+	void ResetStates();
 	
 private:
 	Texture* m_pIdleSprite;

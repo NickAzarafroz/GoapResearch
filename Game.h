@@ -1,8 +1,10 @@
 #pragma once
-
+#include <vector>
 class Avatar;
 class Goal;
 class Texture;
+class Action;
+class Planner;
 class Game final
 {
 public:
@@ -29,6 +31,9 @@ private:
 
 	Avatar* m_pPoppyAvatar;
 	Goal* m_pDesiredWorldState;
+	Planner* m_pPlanner;
+
+	std::vector<Action*> m_pCurrentPlan;
 
 	// FUNCTIONS
 	void Initialize( );

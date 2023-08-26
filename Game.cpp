@@ -2,6 +2,8 @@
 #include "Game.h"
 #include "Avatar.h"
 #include "FirePitGoal.h"
+#include "Planner.h"
+#include "Action.h"
 #include <iostream>
 
 Game::Game( const Window& window ) 
@@ -19,6 +21,20 @@ void Game::Initialize( )
 {
 	m_pPoppyAvatar = new Avatar();
 	m_pDesiredWorldState = new FirePitGoal("HasFirePit");
+	m_pPlanner = new Planner();
+
+	std::pair<std::string, bool> current1{ "HasAxe", false };
+	std::pair<std::string, bool> current2{ "AxeAvailable", true };
+
+	std::pair<std::string, bool> current3{ "HasSticks", false };
+	std::pair<std::string, bool> current4{ "SticksAvailable", false };
+
+	m_pPoppyAvatar->AddCurrentStates(current1);
+	m_pPoppyAvatar->AddCurrentStates(current2);
+	m_pPoppyAvatar->AddCurrentStates(current3);
+	m_pPoppyAvatar->AddCurrentStates(current4);
+
+	m_pCurrentPlan = m_pPlanner->Plan(m_pPoppyAvatar, m_pDesiredWorldState);
 }
 
 void Game::Cleanup( )

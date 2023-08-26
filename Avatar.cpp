@@ -86,9 +86,27 @@ const std::vector<std::pair<std::string, bool>>& Avatar::GetCurrentStates() cons
 	return m_CurrentStates;
 }
 
+void Avatar::AddCurrentStates(std::pair<std::string, bool>& state)
+{
+	m_CurrentStates.emplace_back(state);
+}
+
+void Avatar::ModifyCurrentState(std::pair<std::string, bool>& state, int index)
+{
+	m_CurrentStates[index] = state;
+}
+
 const std::array<Action*, 5>& Avatar::GetAvailableActions() const
 {
 	return m_AvailableActions;
+}
+
+void Avatar::ResetStates()
+{
+	m_CurrentStates[0] = { "HasAxe", false };
+	m_CurrentStates[1] = { "AxeAvailable", true };
+	m_CurrentStates[2] = { "HasSticks", false };
+	m_CurrentStates[3] = { "SticksAvailable", false };
 }
 
 void Avatar::UpdateIdle(float elapsedSec)
