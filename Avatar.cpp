@@ -81,6 +81,11 @@ Rectf Avatar::GetShape()
 	return m_Shape;
 }
 
+const std::vector<std::pair<std::string, bool>>& Avatar::GetCurrentStates() const
+{
+	return m_CurrentStates;
+}
+
 const std::array<Action*, 5>& Avatar::GetAvailableActions() const
 {
 	return m_AvailableActions;

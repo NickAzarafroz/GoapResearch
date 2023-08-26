@@ -1,6 +1,7 @@
 #pragma once
 
 class Avatar;
+class Goal;
 class Texture;
 class Game final
 {
@@ -27,6 +28,7 @@ private:
 	const Window m_Window;
 
 	Avatar* m_pPoppyAvatar;
+	Goal* m_pDesiredWorldState;
 
 	// FUNCTIONS
 	void Initialize( );

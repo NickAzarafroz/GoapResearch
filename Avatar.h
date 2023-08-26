@@ -24,6 +24,7 @@ public:
 	Vector2f GetPosition();
 	Rectf GetShape();
 
+	const std::vector<std::pair<std::string, bool>>& GetCurrentStates() const;
 	const std::array<Action*, 5>& GetAvailableActions() const;
 	
 private:
@@ -33,6 +34,7 @@ private:
 	Rectf m_Shape;
 
 	std::array<Action*, 5> m_AvailableActions;
+	std::vector<std::pair<std::string, bool>> m_CurrentStates;
 
 	float m_Speed;
 	float m_AccuSec;

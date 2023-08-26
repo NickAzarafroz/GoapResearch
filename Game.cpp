@@ -1,6 +1,7 @@
 #include "pch.h"
 #include "Game.h"
 #include "Avatar.h"
+#include "FirePitGoal.h"
 #include <iostream>
 
 Game::Game( const Window& window ) 
@@ -17,6 +18,7 @@ Game::~Game( )
 void Game::Initialize( )
 {
 	m_pPoppyAvatar = new Avatar();
+	m_pDesiredWorldState = new FirePitGoal("HasFirePit");
 }
 
 void Game::Cleanup( )

@@ -57,6 +57,9 @@
     <ClCompile Include="Action.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
+    <ClCompile Include="FirePitGoal.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -99,6 +102,9 @@
       <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Action.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="FirePitGoal.h">
       <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>
