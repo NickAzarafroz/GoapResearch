@@ -5,6 +5,7 @@ class Goal;
 class Texture;
 class Action;
 class Planner;
+class Resource;
 class Game final
 {
 public:
@@ -32,6 +33,10 @@ private:
 	Avatar* m_pPoppyAvatar;
 	Goal* m_pDesiredWorldState;
 	Planner* m_pPlanner;
+
+	std::vector<Resource*> m_pAxeResources;
+	std::vector<Resource*> m_pTreeResources;
+	std::vector<Resource*> m_pFirepitResources;
 
 	std::vector<Action*> m_pCurrentPlan;
 
