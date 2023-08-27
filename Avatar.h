@@ -31,6 +31,8 @@ public:
 	const std::array<Action*, 5>& GetAvailableActions() const;
 
 	void ResetStates();
+	void AddRememberStates(std::pair<std::string, bool>& state);
+	void ModifyRememberStates(std::pair<std::string, bool>& state, int index);
 	
 private:
 	Texture* m_pIdleSprite;
@@ -40,6 +42,7 @@ private:
 
 	std::array<Action*, 5> m_AvailableActions;
 	std::vector<std::pair<std::string, bool>> m_CurrentStates;
+	std::vector<std::pair<std::string, bool>> m_RememberStates;
 
 	float m_Speed;
 	float m_AccuSec;

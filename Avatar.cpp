@@ -53,6 +53,11 @@ Avatar::Avatar()
 Avatar::~Avatar()
 {
 	delete m_pIdleSprite;
+
+	for(const auto& action : m_AvailableActions)
+	{
+		delete action;
+	}
 }
 
 void Avatar::Draw() const
@@ -103,10 +108,18 @@ const std::array<Action*, 5>& Avatar::GetAvailableActions() const
 
 void Avatar::ResetStates()
 {
-	m_CurrentStates[0] = { "HasAxe", false };
-	m_CurrentStates[1] = { "AxeAvailable", true };
-	m_CurrentStates[2] = { "HasSticks", false };
-	m_CurrentStates[3] = { "SticksAvailable", false };
+	m_CurrentStates = m_RememberStates;
+}
+
+void Avatar::AddRememberStates(std::pair<std::string, bool>& state)
+{
+	m_RememberStates.push_back(state);
+}
+
+void Avatar::ModifyRememberStates(std::pair<std::string, bool>& state, int index)
+{
+	m_RememberStates[index] = state;
+	m_CurrentStates[index] = state;
 }
 
 void Avatar::UpdateIdle(float elapsedSec)

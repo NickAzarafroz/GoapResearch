@@ -63,6 +63,7 @@ void Action::ExecuteAction(Avatar* pAvatar, std::vector<Resource*>& pResources, 
 			auto it = std::find(pResources.begin(), pResources.end(), closestResource);
 			if (it != pResources.end())
 			{
+				delete* it;
 				pResources.erase(it);
 			}
 		}

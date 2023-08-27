@@ -26,7 +26,7 @@ void Game::Initialize( )
 {
 	std::random_device rd;
 	std::mt19937 eng(rd());
-	std::uniform_real_distribution<float> distr(0.f, 1000.f);
+	std::uniform_real_distribution<float> distr(0.f, 800.f);
 
 	m_pPoppyAvatar = new Avatar();
 	m_pDesiredWorldState = new FirePitGoal("HasFirePit");
@@ -38,7 +38,7 @@ void Game::Initialize( )
 		float randomY = distr(eng);
 
 		Resource* pAxe = new Axe(randomX, randomY);
-		m_pAxeResources.push_back(pAxe);
+		m_pAxeResources.emplace_back(pAxe);
 	}
 
 	for (int i{}; i < 5; ++i)
@@ -47,7 +47,7 @@ void Game::Initialize( )
 		float randomY = distr(eng);
 
 		Resource* pTree = new Tree(randomX, randomY);
-		m_pTreeResources.push_back(pTree);
+		m_pTreeResources.emplace_back(pTree);
 	}
 
 	for (int i{}; i < 5; ++i)
@@ -56,11 +56,11 @@ void Game::Initialize( )
 		float randomY = distr(eng);
 
 		Resource* pStick = new Stick(randomX, randomY);
-		m_pStickResources.push_back(pStick);
+		m_pStickResources.emplace_back(pStick);
 	}
 
 	Resource* pFirePit = new FirePit(1000.f, 500.f);
-	m_pFirepitResources.push_back(pFirePit);
+	m_pFirepitResources.emplace_back(pFirePit);
 
 	std::pair<std::string, bool> current1{ "HasAxe", false };
 	std::pair<std::string, bool> current2{ "AxeAvailable", true };
@@ -72,6 +72,11 @@ void Game::Initialize( )
 	m_States.push_back(current2);
 	m_States.push_back(current3);
 	m_States.push_back(current4);
+
+	m_pPoppyAvatar->AddRememberStates(current1);
+	m_pPoppyAvatar->AddRememberStates(current2);
+	m_pPoppyAvatar->AddRememberStates(current3);
+	m_pPoppyAvatar->AddRememberStates(current4);
 
 	m_pPoppyAvatar->AddCurrentStates(current1);
 	m_pPoppyAvatar->AddCurrentStates(current2);
@@ -112,6 +117,13 @@ void Game::Update(float elapsedSec)
 {
 	m_pPoppyAvatar->Update(elapsedSec);
 
+	if(m_pAxeResources.empty())
+	{
+		std::pair<std::string, bool> effect = { "AxeAvailable", false };
+
+		m_pPoppyAvatar->ModifyRememberStates(effect, 1);
+	}
+
 	if (!m_pCurrentPlan.empty())
 	{
 		if (m_pCurrentPlan[0]->GetName() == "GetAxe")
@@ -141,7 +153,7 @@ void Game::Update(float elapsedSec)
 	}
 	else
 	{
-		if (m_pFirepitResources[0]->IsRemoved())
+		if (m_pFirepitResources[0]->IsRemoved() && !m_pStickResources.empty())
 		{
 			m_pCurrentPlan = m_pPlanner->Plan(m_pPoppyAvatar, m_pDesiredWorldState);
 		}
