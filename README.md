@@ -35,4 +35,28 @@ Both Plan A and Plan B effectively achieve the desired goal of `BuildShelter`. I
 GOAP is a strong choice when you need characters to think ahead, adapt to surprises, and make decisions in changing scenarios. It's like giving characters a smart, problem-solving brain that can handle complex situations. While FSM (Finite State Machine) and BT (BehaviorTree) are great for simpler tasks. GOAP steps in when you want more sophisticated decision-making in your game or simulation.
 
 ## Own Implementation:
+![OwnImplemantation](https://github.com/NickAzarafroz/GoapResearch/blob/master/GoapPoppy.gif)
+
+In my implemantation the character's task is to build a fire pit. The character has a goal called `FirePitGoal`. To achieve this goal, the character has access to a set of actions: `GetSticks`, `GetAxe`, `ChopTree`, and `BuildFirePit`.
+
+There are two ways the character can build the fire pit:
+
+#### Method 1: The character can choose to follow this sequence:
+- Execute the `GetAxe` action to acquire an axe.
+- Use the axe to perform the `ChopTree` action and obtain wood.
+- Finally, build the fire pit using the acquired wood through the `BuildFirePit` action.
+
+#### Method 2: Alternatively, the character can opt for a different approach:
+- Execute the `GetSticks` action to collect sticks.
+- Directly build the fire pit using the collected sticks via the `BuildFirePit` action.
+
+It's important to note that the second method results in a less robust fire pit compared to the first method. This is because the character didn't follow the full process of chopping a tree to obtain substantial wood.
+
+In this scenario, the character's decision-making is guided by the goal of building a fire pit. The character can choose between the faster but weaker method or the more thorough approach for a stronger result. This showcases how the character can adapt its actions based on the available options to fulfill its goals,
+
+## Links
+#### Goal Oriented Action Planning
+-- GOAP - https://gamedevelopment.tutsplus.com/tutorials/goal-oriented-action-planning-for-a-smarter-ai--cms-20793
+
+-- GOAP - https://www.youtube.com/watch?v=LhnlNKWh7oc
 
