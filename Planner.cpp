@@ -12,7 +12,9 @@ std::vector<Action*> Planner::Plan(Avatar* pAvatar, const Goal* pGoal)
 
 	std::cout << "Goal: " << pGoal->GetDesiredWorldState().first << ", " << std::boolalpha << pGoal->GetDesiredWorldState().second << '\n';
 	std::cout << "Current State: " << pAvatar->GetCurrentStates()[0].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[0].second << ", " <<
-		pAvatar->GetCurrentStates()[1].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[1].second << '\n';
+		pAvatar->GetCurrentStates()[1].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[1].second << ", " << 
+		pAvatar->GetCurrentStates()[2].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[2].second << ", " << 
+		pAvatar->GetCurrentStates()[3].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[3].second <<'\n';
 
 	bool satisfyingActionFound1{};
 
@@ -38,7 +40,9 @@ std::vector<Action*> Planner::Plan(Avatar* pAvatar, const Goal* pGoal)
 				pAvatar->ModifyCurrentState(effect1, 1);
 
 				std::cout << "New State: " << pAvatar->GetCurrentStates()[0].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[0].second << ", " <<
-					pAvatar->GetCurrentStates()[1].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[1].second << '\n';
+					pAvatar->GetCurrentStates()[1].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[1].second << ", " <<
+					pAvatar->GetCurrentStates()[2].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[2].second << ", " <<
+					pAvatar->GetCurrentStates()[3].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[3].second << '\n';
 
 				satisfyingActionFound1 = true;
 				break;
@@ -96,6 +100,7 @@ std::vector<Action*> Planner::Plan(Avatar* pAvatar, const Goal* pGoal)
 		else
 		{
 			std::cout << "Second Plan done! Another plan possible?\n";
+			break;
 		}
 	}
 
