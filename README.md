@@ -36,6 +36,7 @@ GOAP is a strong choice when you need characters to think ahead, adapt to surpri
 
 ## Own Implementation:
 ![OwnImplemantation](https://github.com/NickAzarafroz/GoapResearch/blob/master/GoapPoppy.gif)
+![OwnImplemantation](https://github.com/NickAzarafroz/GoapResearch/blob/master/GoapPoppy.PNG)
 
 In my implemantation the character's task is to build a fire pit. The character has a goal called `FirePitGoal`. To achieve this goal, the character has access to a set of actions: `GetSticks`, `GetAxe`, `ChopTree`, and `BuildFirePit`.
 
