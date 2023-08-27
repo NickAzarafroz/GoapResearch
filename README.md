@@ -53,7 +53,7 @@ There are two ways the character can build the fire pit:
 
 It's important to note that the second method results in a less robust fire pit compared to the first method. This is because the character didn't follow the full process of chopping a tree to obtain substantial wood.
 
-In this scenario, the character's decision-making is guided by the goal of building a fire pit. The character can choose between the faster but weaker method or the more thorough approach for a stronger result. This showcases how the character can adapt its actions based on the available options to fulfill its goals,
+In this scenario, the character's decision-making is guided by the goal of building a fire pit. The character can choose between the faster but weaker method or the more thorough approach for a stronger result. This showcases how the character can adapt its actions based on the available options to fulfill its goals.
 
 ## Links
 #### Goal Oriented Action Planning
