@@ -100,7 +100,6 @@ std::vector<Action*> Planner::Plan(Avatar* pAvatar, const Goal* pGoal)
 		else
 		{
 			std::cout << "Second Plan done! Another plan possible?\n";
-			break;
 		}
 	}
 
