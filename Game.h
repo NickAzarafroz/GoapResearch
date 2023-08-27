@@ -36,9 +36,14 @@ private:
 
 	std::vector<Resource*> m_pAxeResources;
 	std::vector<Resource*> m_pTreeResources;
+	std::vector<Resource*> m_pStickResources;
 	std::vector<Resource*> m_pFirepitResources;
 
 	std::vector<Action*> m_pCurrentPlan;
+
+	std::vector<std::pair<std::string, bool>> m_States;
+
+	float m_AccuSec{};
 
 	// FUNCTIONS
 	void Initialize( );

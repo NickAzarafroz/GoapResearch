@@ -72,6 +72,9 @@
     <ClCompile Include="Tree.cpp">
       <Filter>Game Files</Filter>
     </ClCompile>
+    <ClCompile Include="Stick.cpp">
+      <Filter>Game Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="pch.h">
@@ -132,6 +135,9 @@
       <Filter>Game Files</Filter>
     </ClInclude>
     <ClInclude Include="Resource.h">
+      <Filter>Game Files</Filter>
+    </ClInclude>
+    <ClInclude Include="Stick.h">
       <Filter>Game Files</Filter>
     </ClInclude>
   </ItemGroup>

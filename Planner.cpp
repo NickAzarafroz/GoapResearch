@@ -14,8 +14,12 @@ std::vector<Action*> Planner::Plan(Avatar* pAvatar, const Goal* pGoal)
 	std::cout << "Current State: " << pAvatar->GetCurrentStates()[0].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[0].second << ", " <<
 		pAvatar->GetCurrentStates()[1].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[1].second << '\n';
 
+	bool satisfyingActionFound1{};
+
 	while(pAvatar->GetCurrentStates()[0] != pGoal->GetDesiredWorldState())
 	{
+		satisfyingActionFound1 = false;
+
 		for (const auto& action : pAvatar->GetAvailableActions())
 		{
 			std::cout << "Can action " << action->GetName() << " run?\n";
@@ -36,9 +40,16 @@ std::vector<Action*> Planner::Plan(Avatar* pAvatar, const Goal* pGoal)
 				std::cout << "New State: " << pAvatar->GetCurrentStates()[0].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[0].second << ", " <<
 					pAvatar->GetCurrentStates()[1].first << ", " << std::boolalpha << pAvatar->GetCurrentStates()[1].second << '\n';
 
+				satisfyingActionFound1 = true;
 				break;
 			}
 			else std::cout << "No\n";
+		}
+
+		if (!satisfyingActionFound1)
+		{
+			std::cout << "No satisfying action found. Exiting loop.\n";
+			break;
 		}
 	}
 
@@ -93,6 +104,11 @@ std::vector<Action*> Planner::Plan(Avatar* pAvatar, const Goal* pGoal)
 	if(!satisfyingActionFound)
 	{
 		return m_Plan;
+	}
+
+	if(!satisfyingActionFound1)
+	{
+		return m_Plan2;
 	}
 
 	int costPlan1{};

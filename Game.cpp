@@ -6,6 +6,7 @@
 #include "Action.h"
 #include "Axe.h"
 #include "Tree.h"
+#include "Stick.h"
 #include "FirePit.h"
 #include <iostream>
 #include <random>
@@ -49,6 +50,15 @@ void Game::Initialize( )
 		m_pTreeResources.push_back(pTree);
 	}
 
+	for (int i{}; i < 5; ++i)
+	{
+		float randomX = distr(eng);
+		float randomY = distr(eng);
+
+		Resource* pStick = new Stick(randomX, randomY);
+		m_pStickResources.push_back(pStick);
+	}
+
 	Resource* pFirePit = new FirePit(1000.f, 500.f);
 	m_pFirepitResources.push_back(pFirePit);
 
@@ -56,7 +66,12 @@ void Game::Initialize( )
 	std::pair<std::string, bool> current2{ "AxeAvailable", true };
 
 	std::pair<std::string, bool> current3{ "HasSticks", false };
-	std::pair<std::string, bool> current4{ "SticksAvailable", false };
+	std::pair<std::string, bool> current4{ "SticksAvailable", true };
+
+	m_States.push_back(current1);
+	m_States.push_back(current2);
+	m_States.push_back(current3);
+	m_States.push_back(current4);
 
 	m_pPoppyAvatar->AddCurrentStates(current1);
 	m_pPoppyAvatar->AddCurrentStates(current2);
@@ -78,6 +93,11 @@ void Game::Cleanup( )
 	}
 
 	for (const auto& resource : m_pTreeResources)
+	{
+		delete resource;
+	}
+
+	for (const auto& resource : m_pStickResources)
 	{
 		delete resource;
 	}
@@ -104,6 +124,11 @@ void Game::Update(float elapsedSec)
 			m_pCurrentPlan[0]->ExecuteAction(m_pPoppyAvatar, m_pTreeResources, elapsedSec);
 		}
 
+		if (m_pCurrentPlan[0]->GetName() == "GetSticks")
+		{
+			m_pCurrentPlan[0]->ExecuteAction(m_pPoppyAvatar, m_pStickResources, elapsedSec);
+		}
+
 		if (m_pCurrentPlan[0]->GetName() == "BuildFirePit")
 		{
 			m_pCurrentPlan[0]->ExecuteAction(m_pPoppyAvatar, m_pFirepitResources, elapsedSec);
@@ -116,8 +141,23 @@ void Game::Update(float elapsedSec)
 	}
 	else
 	{
-		m_pCurrentPlan = m_pPlanner->Plan(m_pPoppyAvatar, m_pDesiredWorldState);
+		if (m_pFirepitResources[0]->IsRemoved())
+		{
+			m_pCurrentPlan = m_pPlanner->Plan(m_pPoppyAvatar, m_pDesiredWorldState);
+		}
+		else
+		{
+			m_AccuSec += elapsedSec;
+
+			if(m_AccuSec > 5.f)
+			{
+				m_pFirepitResources[0]->RemoveFromGame();
+				m_AccuSec = 0.f;
+			}
+		}
 	}
+
+
 }
 
 void Game::Draw( ) const
@@ -131,6 +171,11 @@ void Game::Draw( ) const
 	}
 
 	for (const auto& resource : m_pTreeResources)
+	{
+		resource->Draw();
+	}
+
+	for (const auto& resource : m_pStickResources)
 	{
 		resource->Draw();
 	}
